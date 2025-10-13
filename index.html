@@ -4,15 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple to-do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
-<h1>My To-do List</h1>
-<div id="todo-container">
-    <input type="text" id="taskInput" placeholder = "Enter a new task">
-    <button onclick="addTask()">Add</button>
-    <ul id="taskList"></ul>
-</div>
+<main class="app">
+    <header class="app__header">
+        <h1>My To-do List</h1>
+        <!-- <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">🌗</button> -->
+    </header>
+
+    <!-- shows how many tasks are not completed -->
+    <p id="count" class="muted">0 tasks left</p>
+
+
+    <section class="card">
+        <!-- wrapping input+button in a form lets you press Enter to add -->
+        <form id="todoForm" class="input-row" onsubmit="addTask(); return false;">
+            <input id="taskInput" class="input" type="text" placeholder="Enter a new task" />
+            <button class="btn btn--primary" type="submit">Add</button>
+        </form>
+
+    <ul id="taskList" class ="list"></ul>
+    </section>
+</main>
 
 <script src="script.js"></script>
 </body>
