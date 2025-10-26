@@ -6,12 +6,10 @@
     --text: #f1f5f9;
     --muted: #94a3b8;
     --brand: #6366f1;
-    --brand-strong: #5558e3;
     --success: #10b981;
     --danger: #ef4444;
     --warning: #f59e0b;
     --border: rgba(148, 163, 184, 0.1);
-    --ring: rgba(99,102,241,0.1);
     --shadow: 0 4px 20px rgba(0,0,0,.2);
 }
 
@@ -29,8 +27,6 @@ body {
     padding: 80px 20px;
 }
 
-/* ========== Layout ========== */
-
 .frame {
     background: transparent;
     padding: 0;
@@ -39,10 +35,10 @@ body {
 }
 
 .app {
-    width: 680px;
+    width: 560px;
     background: var(--card);
-    border-radius: 24px;
-    padding: 48px;
+    border-radius: 20px;
+    padding: 40px;
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
 }
@@ -55,12 +51,10 @@ body {
 }
 
 h1 {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
     margin: 0;
-    color: var(--text);
-    opacity: 0.95;
 }
 
 /* ========== Card ========== */
@@ -69,7 +63,7 @@ h1 {
     border: 1px solid var(--border);
     box-shadow: none;
     border-radius: 16px;
-    padding: 28px;
+    padding: 20px;
 }
 
 /* ========== Inputs ========== */
@@ -119,6 +113,43 @@ h1 {
     font-size: 13px;
 }
 
+/* ========== Filter Buttons ========== */
+.filter-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.filter-btn:hover {
+    background: var(--bg);
+    border-color: rgba(148, 163, 184, 0.2);
+    color: var(--text);
+}
+
+.filter-btn.active {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: white;
+}
+
+.filter-btn:active {
+    transform: scale(0.95);
+}
+
 /* ========== Buttons ========== */
 .btn {
     height: 48px;
@@ -141,100 +172,26 @@ h1 {
 }
 
 .btn--primary:hover {
-    background: var(--brand-strong);
+    background: #5558e3;
     box-shadow: 0 4px 12px rgba(99,102,241,0.3);
 }
 
-.icon-btn {
-    height: 36px;
-    min-width: 36px;
-    border-radius: 10px;
-    background: var(--bg-accent);
-    border: 1px solid rgba(255,255,255,.08);
-    color: var(--text);
-    cursor: pointer;
-}
-
-/* ========== List ========== */
-.list {
-    margin: 20px 0 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 10px;
-}
-
-.list li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px;
-    border-radius: 12px;
-    background: var(--card);
+.btn--clear {
+    width: 100%;
+    margin-top: 16px;
+    background: transparent;
+    color: var(--muted);
     border: 1px solid var(--border);
-    transition: all .2s ease;
-    cursor: pointer;
-}
-
-.list li:hover {
-    background: var(--bg);
-    border-color: rgba(148, 163, 184, 0.2);
-}
-
-.list input[type="checkbox"] {
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 6px;
-    border: 2px solid var(--muted);
-    display: grid;
-    place-items: center;
-    outline: none;
-    cursor: pointer;
-    transition: border .15s ease, background .15s ease;
-}
-
-.list input[type="checkbox"]::after {
-    content: "✓";
-    font-size: 14px;
-    opacity: 0;
-    transform: scale(.6);
-    transition: transform .15s, opacity .15s;
-}
-
-.list input[type="checkbox"]:checked {
-    background: var(--success);
-    border-color: var(--success);
-}
-
-.list input[type="checkbox"]:checked::after {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.task-content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-    min-width: 0;
-}
-
-.task {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 15px;
     font-weight: 500;
 }
 
-.done .task {
-    color: var(--muted);
-    text-decoration: line-through;
+.btn--clear:hover {
+    background: rgba(239,68,68,.1);
+    border-color: var(--danger);
+    color: var(--danger);
 }
 
-/* ========== Category Dropdown ========== */
-
+/* ========== Category & Date Inputs ========== */
 #categorySelect {
     flex: 1;
     height: 48px;
@@ -265,46 +222,6 @@ h1 {
     color: var(--text);
 }
 
-/* Category badge base styling */
-.category-badge {
-    display: inline-block;
-    margin-left: 10px;
-    padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 700;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Category-specific colors with transparency */
-.category-work {
-    background: rgba(59, 130, 246, 0.15);
-    color: #60a5fa;
-}
-
-.category-personal {
-    background: rgba(16, 185, 129, 0.15);
-    color: #34d399;
-}
-
-.category-shopping {
-    background: rgba(245, 158, 11, 0.15);
-    color: #fbbf24;
-}
-
-.category-health {
-    background: rgba(239, 68, 68, 0.15);
-    color: #f87171;
-}
-
-.category-other {
-    background: rgba(107, 114, 128, 0.15);
-    color: #9ca3af;
-}
-
-/* ========== Due Date ========== */
-
 #dueDateInput {
     flex: 1;
     height: 48px;
@@ -330,6 +247,87 @@ h1 {
     cursor: pointer;
 }
 
+/* ========== List ========== */
+.list {
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 8px;
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.list li:hover {
+    background: var(--bg);
+    border-color: rgba(148, 163, 184, 0.2);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px !important;
+    color: var(--muted);
+    font-size: 14px;
+    background: transparent !important;
+    border: 2px dashed var(--border) !important;
+    cursor: default !important;
+}
+
+.empty-state:hover {
+    background: transparent !important;
+    border-color: var(--border) !important;
+}
+
+.task-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.task {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.done .task {
+    color: var(--muted);
+    text-decoration: line-through;
+}
+
+/* ========== Category Badges ========== */
+.category-badge {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.category-work { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+.category-personal { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.category-shopping { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.category-health { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.category-other { background: rgba(107, 114, 128, 0.15); color: #9ca3af; }
+
+/* ========== Due Dates ========== */
 .due-date {
     font-size: 13px;
     color: var(--muted);
@@ -339,22 +337,10 @@ h1 {
     font-weight: 500;
 }
 
-.due-date.today {
-    color: #fbbf24;
-}
-
-.due-date.soon {
-    color: #fb923c;
-}
-
-.due-date.overdue {
-    color: var(--danger);
-}
-
-.done .due-date {
-    color: #6b7280;
-    text-decoration: line-through;
-}
+.due-date.today { color: #fbbf24; }
+.due-date.soon { color: #fb923c; }
+.due-date.overdue { color: var(--danger); }
+.done .due-date { color: #6b7280; text-decoration: line-through; }
 
 /* ========== Delete Button ========== */
 .delete-btn {
@@ -375,4 +361,3 @@ h1 {
     border-color: var(--danger);
     color: var(--danger);
 }
-

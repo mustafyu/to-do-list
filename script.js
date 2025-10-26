@@ -107,10 +107,6 @@ function renderTasks() {
     taskList.innerHTML = '';
 
     if (filteredTasks.length === 0) {
-        const emptyMessage = currentFilter === 'all'
-            ? 'No tasks yet. Add one above!'
-            : `No ${currentFilter} tasks`;
-        taskList.innerHTML = `<li class="empty-state">${emptyMessage}</li>`;
         return;
     }
 
