@@ -11,7 +11,9 @@ function updateCount() {
 // main add function
 function addTask() {
     const input = document.getElementById("taskInput");
+    const categorySelect = document.getElementById("categorySelect");
     const text = input.value.trim();
+    const category = categorySelect.value;
     if (!text) return; // ignore empty input
 
     // create a new <li>
@@ -21,6 +23,15 @@ function addTask() {
     const span = document.createElement("span");
     span.className = "task";
     span.textContent = text;
+
+
+    // category badge (if category exists)
+    if (category) {
+        const badge = document.createElement("span");
+        badge.className = `category-badge category-${category}`;
+        badge.textContent = category;
+        span.appendChild(badge);
+    }
 
     //  delete button
     const del = document.createElement("button");
@@ -45,8 +56,9 @@ function addTask() {
     // add li into the ul
     document.getElementById("taskList").appendChild(li);
 
-    // clear the input
+    // clear the input and reset category
     input.value = "";
+    categorySelect.value = "";
 
     // refresh counter
     updateCount();

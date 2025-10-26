@@ -20,18 +20,38 @@ body {
     margin: 0;
     font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     color: var(--text);
+
+    /* keep your nice blue background */
     background:
             radial-gradient(1200px 600px at 10% -10%, #1f2937 10%, transparent 60%),
             radial-gradient(1200px 600px at 110% 10%, #1e1b4b 10%, transparent 60%),
-            var(--bg);
+            #1b1f3b;
+
+    /* this keeps your card higher up, like before */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;   /* 👈 not centered vertically */
+    padding-top: 200px;
+    transform: scale(1.2);  /* fix for Safari blurry fonts *//* pushes it down a bit */
 }
 
+
 /* ========== Layout ========== */
+
+.frame {
+   background: #041a45;
+    padding: 60px;
+    border-radius: 24px;
+    box-shadow: 0 0 0 20px rgb(3, 16, 50) inset ;
+}
+
+/* Your actual to-do card */
 .app {
-    max-width: 500px;
-    margin: 120px auto;
-    padding: 0 20px;
-    transform:scale(1.50);
+    width: 520px;              /* card width */
+    background: #0b1220;       /* dark card background */
+    border-radius: 16px;
+    padding: 32px;             /* space inside card */
+    border: 3px solid rgba(99,102,241,0.6); /* violet border if you want */
 }
 .app__header {
     display: flex;
@@ -119,10 +139,9 @@ h1 {
 
 /* Individual item as a “pill card” */
 .list li {
-    display: grid;
-    grid-template-columns: auto 1fr auto; /* checkbox | text | delete */
+    display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
     padding: 10px 12px;
     border-radius: 12px;
     background: #0f1a2e;
@@ -170,6 +189,53 @@ h1 {
     text-decoration: line-through;
 }
 
+/*Category part*/
+
+#categorySelect {
+    margin-left: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #6366f1;
+    cursor: pointer;
+}
+
+/* Category badge base styling */
+.category-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+/* Category-specific colors */
+.category-work {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.category-personal {
+    background-color: #10b981;
+    color: white;
+}
+
+.category-shopping {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.category-health {
+    background-color: #ef4444;
+    color: white;
+}
+
+.category-other {
+    background-color: #6b7280;
+    color: white;
+}
+
 /* Delete button */
 .delete-btn {
     background: transparent;
@@ -177,6 +243,7 @@ h1 {
     color: #e5e7eb;
     border-radius: 10px;
     height: 34px; padding: 0 10px;
+    width: 50px;
     cursor: pointer;
     transition: background .15s, color .15s, border .15s;
 }
