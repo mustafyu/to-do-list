@@ -61,18 +61,18 @@ function addTask() {
 
         if (diffDays < 0) {
             dateDisplay.classList.add("overdue");
-            dateText = `⚠️ ${dateText} (Overdue)`;
+            dateText = ` ${dateText} (Overdue)`;
         } else if (diffDays === 0) {
             dateDisplay.classList.add("today");
-            dateText = `📅 Today`;
+            dateText = ` Today`;
         } else if (diffDays === 1) {
             dateDisplay.classList.add("soon");
-            dateText = `📅 Tomorrow`;
+            dateText = ` Tomorrow`;
         } else if (diffDays <= 7) {
             dateDisplay.classList.add("soon");
-            dateText = `📅 ${dateText} (${diffDays} days)`;
+            dateText = ` ${dateText} (${diffDays} days)`;
         } else {
-            dateText = `📅 ${dateText}`;
+            dateText = ` ${dateText}`;
         }
 
         dateDisplay.textContent = dateText;
